@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     EditText jetCode, jetName, jetPrice, jetQuantity;
     CheckBox jcbAvailable;
     RadioButton jrbAppliance, jrbTechnology, jrbHome, jrbOther;
-    Button jbtnAdd, jbtnQuery, jbtnAnull, jbtnCancel;
+    Button jbtnAdd, jbtnQuery, jbtnAnnul, jbtnCancel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,13 +30,13 @@ public class MainActivity extends AppCompatActivity {
         jcbAvailable = findViewById(R.id.cbAvailable);
 
         jrbAppliance = findViewById(R.id.rbAppliance);
-        jrbTechnology = findViewById(R.id.rbTecnology);
+        jrbTechnology = findViewById(R.id.rbTechnology);
         jrbHome = findViewById(R.id.rbHome);
         jrbOther = findViewById(R.id.rbOther);
 
         jbtnAdd = findViewById(R.id.btnAdd);
         jbtnQuery = findViewById(R.id.btnQuery);
-        jbtnAnull = findViewById(R.id.btnAnull);
+        jbtnAnnul = findViewById(R.id.btnAnnul);
         jbtnCancel = findViewById(R.id.btnCancel);
     }
 }
