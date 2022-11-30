@@ -21,39 +21,45 @@
         android:id="@+id/etCode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Codigo" />
+        android:hint="Codigo" />
 
     <EditText
         android:id="@+id/etName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name" />
+        android:hint="Nombre" />
 
     <EditText
         android:id="@+id/etPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:ems="10"
-        android:inputType="number"
-        android:text="Name" />
+        android:inputType="numberDecimal"
+        android:hint="Precio" />
 
     <EditText
         android:id="@+id/etQuantity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Name" />
+        android:inputType="number"
+        android:hint="Cantidad" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="match_parent"
         android:layout_height="45dp"
-        android:text="TextView" />
+        android:gravity="center"
+        android:textSize="30sp"
+        android:text="Categoria" />
 
     <RadioGroup
         android:layout_width="match_parent"
@@ -63,13 +69,15 @@
             android:id="@+id/rbAppliance"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RadioButton" />
+            android:textSize="15sp"
+            android:text="Electrodomesticos" />
 
         <RadioButton
             android:id="@+id/rbTechnology"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RadioButton" />
+            android:textSize="15sp"
+            android:text="tecnologia" />
 
         <RadioButton
             android:id="@+id/rbHome"
