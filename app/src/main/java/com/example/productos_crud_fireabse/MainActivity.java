@@ -8,8 +8,12 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     RadioButton jrbAppliance, jrbTechnology, jrbHome, jrbOther;
     Button jbtnAdd, jbtnQuery, jbtnAnnul, jbtnCancel;
 
+    String code, name, price, quantity, category, available, identDoc;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
@@ -46,6 +51,57 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void productSave(View view) {
+        code = jetCode.getText().toString();
+        name = jetName.getText().toString();
+        price = jetPrice.getText().toString();
+        quantity = jetQuantity.getText().toString();
 
+        if (code.isEmpty() || name.isEmpty() || price.isEmpty() || quantity.isEmpty()) {
+            Toast.makeText(MainActivity.this, "Todos Los Campos Son Requeridos", Toast.LENGTH_LONG).show();
+        } else {
+            /* Que Categoria Es El Producto */
+            if (jrbAppliance.isChecked()) {
+                category = "Appliance";
+            } else if (jrbTechnology.isChecked()) {
+                category = "Technology";
+            } else if (jrbHome.isChecked()) {
+                category = "Home";
+            } else {
+                category = "Other";
+            }
+
+            // Create A New Product
+            Map<String, Object> product = new HashMap<>();
+            product.put("Code", code);
+            product.put("name", name);
+            product.put("price", price);
+            product.put("Quantity", quantity);
+            product.put("Category", category);
+            product.put("Available", "yes");
+
+            // Add a new document with a generated ID
+            /*db.collection("Stock")
+                            .add()
+
+            // Add a new document with a generated ID
+            db.collection("Campeonato")
+                    .add(equipo)
+                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                        @Override
+                        public void onSuccess(DocumentReference documentReference) {
+                            //Log.d("", "DocumentSnapshot added with ID: " + documentReference.getId());
+                            Toast.makeText(MainActivity.this, "Documento Adicionado", Toast.LENGTH_LONG).show();
+                            limpiarCampos();
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            //Log.w("Error adding document", e);
+                            Toast.makeText(MainActivity.this, "Documento NO Adicionado", Toast.LENGTH_LONG).show();
+                        }
+                    }); */
+
+        }
     }
 }
