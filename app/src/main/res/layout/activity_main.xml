@@ -83,20 +83,21 @@
             android:id="@+id/rbHome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RadioButton" />
+            android:text="Hogar" />
 
         <RadioButton
             android:id="@+id/rbOther"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="RadioButton" />
+            android:text="Otro" />
     </RadioGroup>
 
     <CheckBox
         android:id="@+id/cbAvailable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="CheckBox" />
+
+        android:text="Disponible" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -107,15 +108,17 @@
             android:id="@+id/btnAdd"
             android:layout_width="363dp"
             android:layout_height="match_parent"
+            android:onClick="productSave"
             android:layout_weight="1"
-            android:text="Button" />
+            android:text="Adiccionar" />
 
         <Button
             android:id="@+id/btnAnnul"
             android:layout_width="357dp"
             android:layout_height="64dp"
             android:layout_weight="1"
-            android:text="Button" />
+            android:onClick="productAnnul"
+            android:text="Anular" />
     </LinearLayout>
 
     <LinearLayout
@@ -125,17 +128,19 @@
 
         <Button
             android:id="@+id/btnQuery"
-            android:layout_width="104dp"
+            android:layout_width="122dp"
             android:layout_height="match_parent"
+            android:onClick="productQuery"
             android:layout_weight="1"
-            android:text="Button" />
+            android:text="Consultar" />
 
         <Button
             android:id="@+id/btnCancel"
             android:layout_width="wrap_content"
             android:layout_height="61dp"
+            android:onClick="productCancel"
             android:layout_weight="1"
-            android:text="Button" />
+            android:text="Cancelar" />
     </LinearLayout>
 
 
