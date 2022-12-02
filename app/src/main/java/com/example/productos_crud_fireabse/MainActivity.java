@@ -3,10 +3,13 @@ package com.example.productos_crud_fireabse;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
+
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
     CheckBox jcbAvailable;
     RadioButton jrbAppliance, jrbTechnology, jrbHome, jrbOther;
     Button jbtnAdd, jbtnQuery, jbtnAnnul, jbtnCancel;
+
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,5 +43,9 @@ public class MainActivity extends AppCompatActivity {
         jbtnQuery = findViewById(R.id.btnQuery);
         jbtnAnnul = findViewById(R.id.btnAnnul);
         jbtnCancel = findViewById(R.id.btnCancel);
+    }
+
+    public void productSave(View view) {
+
     }
 }
