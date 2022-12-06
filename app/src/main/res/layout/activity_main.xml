@@ -96,7 +96,7 @@
         android:id="@+id/cbAvailable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:enabled="false"
         android:text="Disponible" />
 
     <LinearLayout
