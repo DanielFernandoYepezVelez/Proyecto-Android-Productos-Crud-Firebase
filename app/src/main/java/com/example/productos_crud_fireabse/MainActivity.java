@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
     RadioButton jrbAppliance, jrbTechnology, jrbHome, jrbOther;
     Button jbtnAdd, jbtnQuery, jbtnAnnul, jbtnCancel;
 
+    boolean resulDB = false;
     String code, name, price, quantity, category, available, identDoc;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -153,6 +154,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void productQuery(View view) {
+        resulDB = false;
         code = jetCode.getText().toString();
 
         if (code.isEmpty()) {
@@ -166,6 +168,7 @@ public class MainActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<QuerySnapshot> task) {
                             if (task.isSuccessful()) {
                                 for (QueryDocumentSnapshot document: task.getResult()) {
+                                    resulDB = true;
 
                                     if (document.getString("Available").equalsIgnoreCase("no")) {
                                         userMessage("El Registro Existe, Pero, Esta Inactivo");
@@ -191,11 +194,16 @@ public class MainActivity extends AppCompatActivity {
                                         } else {
                                             jcbAvailable.setChecked(false);
                                         }
+
+                                        userMessage("Producto Encontrado Existosamente");
                                     }
                                 }
-                                userMessage("Producto Encontrado Existosamente");
+
+                                if (!resulDB) {
+                                    userMessage("Producto NO Encontrado");
+                                }
                             } else {
-                                userMessage("Producto NO Encontrado");
+                                userMessage("Tarea No Realizada Correctamente");
                             }
                         }
                     });
@@ -203,24 +211,28 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void productAnnul(View view) {
-        String category;
-        code = jetCode.getText().toString();
-        name = jetName.getText().toString();
-        price = jetPrice.getText().toString();
-        quantity = jetQuantity.getText().toString();
-
-        if (code.isEmpty() || name.isEmpty() || price.isEmpty() || quantity.isEmpty()) {
-            userMessage("Todos Los Campos Son Requeridos");
+        if (!resulDB) {
+            userMessage("Primero Debe Consultar, Si Existe El Producto");
         } else {
-            /* Que Categoria Es El Product */
-            category = productCategory();
+            String category;
+            code = jetCode.getText().toString();
+            name = jetName.getText().toString();
+            price = jetPrice.getText().toString();
+            quantity = jetQuantity.getText().toString();
 
-            // Create A Product
-            Map<String, Object> product = userProduct(code, name, price, quantity, category, "no");
+            if (code.isEmpty() || name.isEmpty() || price.isEmpty() || quantity.isEmpty()) {
+                userMessage("Todos Los Campos Son Requeridos");
+            } else {
+                /* Que Categoria Es El Product */
+                category = productCategory();
 
-            // Annul A Product
-            productSaveDB("Stock", product, "set");
-            cleanFields();
+                // Create A Product
+                Map<String, Object> product = userProduct(code, name, price, quantity, category, "no");
+
+                // Annul A Product
+                productSaveDB("Stock", product, "set");
+                cleanFields();
+            }
         }
     }
 
